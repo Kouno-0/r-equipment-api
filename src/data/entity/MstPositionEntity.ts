@@ -8,7 +8,7 @@ export class MstPosition extends BaseEntity {
   @PrimaryColumn(
     'varchar',
     { 
-    length: 4,
+    length: 3,
     comment: '役職ID'
   })
   readonly position_id: string;

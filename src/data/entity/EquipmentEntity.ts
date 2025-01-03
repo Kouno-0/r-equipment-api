@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity } from 'typeorm';
 import { MstEquipment } from './MstEquipmentEntity';
+import { MstType } from './MstTypeEntity';
 
 @Entity('equipment')
 export class Equipment extends BaseEntity {
   @PrimaryColumn(
     'varchar',
     {
-    length: 10,
+    length: 7,
     comment: '装備ID'
   })
   readonly equipment_id: string;
@@ -15,10 +16,14 @@ export class Equipment extends BaseEntity {
   @Column(
     'varchar',
     { 
-    length: 7,
+    length: 5,
     comment: '装備カテゴリID' 
    })
   readonly category_id: string;
+
+  @ManyToOne(() => MstEquipment, (equipment) => equipment.equipment)
+  @JoinColumn({ name: 'category_id' }) 
+  mstEquipment: MstEquipment
 
   @Column(
     'varchar',
@@ -28,20 +33,24 @@ export class Equipment extends BaseEntity {
    })
   readonly equipment_name: string;
 
-  @Column(
-    'date',
-    {comment: '購入日'}
-  )
-  readonly purchase_date: Date;
+  @Column('date', {
+    comment: '購入日',
+})
+  readonly purchase_date: string;
 
   @Column(
-    'int', 
-    { 
+    'varchar',
+    {
+      length: 2,
       nullable: true,
-      comment: '使用不可フラグ'
+      comment: '状態区分'
    }
   )
-  readonly is_unavailable: number;
+  readonly status_cd: string;
+
+  @ManyToOne(() => MstType, (mstType) => mstType.equipment)
+  @JoinColumn({ name: 'status_cd', referencedColumnName: 'type_cd' }) 
+  mstType: MstType
 
   @Column(
     'varchar',

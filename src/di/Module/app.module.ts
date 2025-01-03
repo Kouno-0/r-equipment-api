@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MstUniversityModule } from './mst-university.module';
 import { MstPositionModule } from './mst-position.module';
 import { UsersModule } from './users.module';
+import { EquipmentModule } from './equipment.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { UsersModule } from './users.module';
     MstEquipmentModule,
     MstUniversityModule,
     MstPositionModule,
+    EquipmentModule,
     UsersModule
   ],
 })

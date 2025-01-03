@@ -2,7 +2,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
 import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Matches, MaxLength } from "class-validator";
-import { COLUMNS } from "src/common/const/column";
+import { PARAMS } from "src/common/const/params";
 import { IsFullWidthKatakana } from "src/controllers/validator/isFullWidthKatakana";
 
 export class GetUsersRequestQueryParam {
@@ -22,8 +22,8 @@ export class GetUsersRequestQueryParam {
   @ApiProperty({ required: false, description: '会員ID' })
   @Type(() => String)
   @IsOptional()
-  @Matches(/^[\x20-\x7E]*$/, { message: () => `${COLUMNS.userId}は半角文字で入力してください` })
-  @MaxLength(9, { message: () => `${COLUMNS.userId}は$constraint1桁以内で入力してください` })
+  @Matches(/^[\x20-\x7E]*$/, { message: () => `${PARAMS.userId}は半角文字で入力してください` })
+  @MaxLength(7, { message: () => `${PARAMS.userId}は$constraint1桁以内で入力してください` })
   userId?: string;
 
   @ApiProperty({ required: false, description: '期' })
@@ -44,21 +44,21 @@ export class GetUsersRequestQueryParam {
   @Type(() => String)
   @IsOptional()
   @IsString()
-  @MaxLength(7, { message: () =>  `${COLUMNS.universityId}は$constraint1桁以内で入力してください`})
+  @MaxLength(3, { message: () =>  `${PARAMS.universityId}は$constraint1桁以内で入力してください`})
   universityId?: string;
 
   @ApiProperty({ required: false, description: '役職ID' })
   @Type(() => String)
   @IsOptional()
   @IsString()
-  @MaxLength(4, { message: () =>  `${COLUMNS.positionId}は$constraint1桁以内で入力してください`})
+  @MaxLength(3, { message: () =>  `${PARAMS.positionId}は$constraint1桁以内で入力してください`})
   positionId?: string;
 
   @ApiProperty({ required: false, description: 'メールアドレス' })
   @Type(() => String)
   @IsOptional()
   @IsString()
-  @MaxLength(256, { message: () =>  `${COLUMNS.mailAddress}は$constraint1桁以内で入力してください`})
+  @MaxLength(256, { message: () =>  `${PARAMS.mailAddress}は$constraint1桁以内で入力してください`})
   mailAddress?: string;
 
   @ApiProperty({ required: false, description: 'ソート' })

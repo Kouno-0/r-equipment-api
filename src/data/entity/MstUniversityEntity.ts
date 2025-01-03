@@ -8,7 +8,7 @@ export class MstUniversity extends BaseEntity {
   @PrimaryColumn(
     'varchar',
     { 
-    length: 4,
+    length: 3,
     comment: '大学ID'
   })
   readonly university_id: string;

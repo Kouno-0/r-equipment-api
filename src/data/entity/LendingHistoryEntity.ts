@@ -43,7 +43,7 @@ export class LendingHistory extends BaseEntity {
   @Column(
     'varchar',
     { 
-    length: 4,
+    length: 3,
      nullable: true,
     comment: '返却場所ID'
   })
@@ -61,7 +61,7 @@ export class LendingHistory extends BaseEntity {
   @Column(
     'varchar',
     { 
-    length: 10,
+    length: 7,
     comment: '装備ID'
   })
   readonly equipment_id: string;
@@ -69,7 +69,7 @@ export class LendingHistory extends BaseEntity {
   @Column(
     'varchar',
     { 
-    length: 9,
+    length: 7,
     comment: '会員ID'
   })
   readonly user_id: string;

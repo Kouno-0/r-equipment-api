@@ -1,15 +1,15 @@
 export class UserDto {
-  userId: number;
-  term: string;
+  userId: string;
+  term: number;
   userLastName: string;
   userFirstName: string;
   userLastNameKana: string;
   userFirstNameKana: string;
   fullNameKana: string;
-  universityId: number;
+  universityId: string;
   universityName: string;
   universityOther: string;
-  positionId: number;
+  positionId: string;
   positionName: string;
   isManager: boolean;
   mailAddress: string;
