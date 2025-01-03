@@ -1,16 +1,20 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany } from 'typeorm';
+import { Equipment } from './EquipmentEntity';
 
 @Entity('mst_equipment')
 export class MstEquipment extends BaseEntity {
   @PrimaryColumn(
     'varchar',
     {
-    length: 7,
+    length: 5,
     name: 'equipment_category_id',
     comment: '装備カテゴリID'
    })
   readonly equipmentCategoryId: string;
+
+  @OneToMany(() => Equipment, (equipment) => equipment.category_id )
+  equipment: Equipment[];
 
   @Column(
     'varchar',

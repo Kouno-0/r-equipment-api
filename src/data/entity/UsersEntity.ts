@@ -8,7 +8,7 @@ export class Users extends BaseEntity  {
   @PrimaryColumn(
     'varchar',
     { 
-    length: 9,
+    length: 7,
     comment: '会員ID'
   })
   readonly user_id: string;
@@ -54,7 +54,7 @@ export class Users extends BaseEntity  {
   @Column(
     'varchar',
     { 
-    length: 7,
+    length: 3,
     comment: '大学ID'
   })
   readonly university_id: string;
@@ -75,7 +75,7 @@ export class Users extends BaseEntity  {
   @Column(
     'varchar',
     { 
-    length: 4,
+    length: 3,
     nullable: true,
     comment: '役職ID'
    })

@@ -118,7 +118,7 @@ export class UsersRepository extends Repository<Users> implements IUsersReposito
           { mail_address: `${searchParam.mailAddress}%` },
         );
       }
-      if (searchParam.mailAddress) {
+      if (searchParam.userNameKana) {
         query.andWhere(
           `CONCAT(${UsersRepository.ALIAS}.${UsersRepository.COLNAMES.COLUMN_USER_LAST_NAME_KANA}, ${UsersRepository.COLNAMES.COLUMN_USER_FIRST_NAME_KANA}) LIKE :user_name_kana`,
           { user_name_kana: `${searchParam.userNameKana}%` },

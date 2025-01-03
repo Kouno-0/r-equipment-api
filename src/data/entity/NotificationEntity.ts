@@ -5,8 +5,8 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Base
 export class Notification extends BaseEntity {
   @PrimaryColumn(
     'varchar',
-    { 
-    length: 7,
+    {
+    length: 6,
     comment: 'お知らせID'
   })
   readonly notification_id: string;
@@ -26,7 +26,7 @@ export class Notification extends BaseEntity {
   @Column(
     'varchar',
     { 
-    length: 30,
+    length: 40,
     comment: 'タイトル'
   })
   readonly title: string;

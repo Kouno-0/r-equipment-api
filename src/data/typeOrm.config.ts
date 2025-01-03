@@ -12,6 +12,7 @@ export default new DataSource({
   database: process.env.DB_DATABASE,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
+  timezone: '+09:00', // JST設定
   entities: [join(__dirname, '../**/*Entity{.ts,.js}')],
   migrations: [join(__dirname, '../**/migrations/*.js')],
   logging: true,

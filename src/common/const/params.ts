@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-export const COLUMNS = {
+export const PARAMS = {
   userId: '会員ID',
   term: '期',
   userLastName: '会員姓',
@@ -21,5 +21,9 @@ export const COLUMNS = {
   isReturnPlace: '返却場所フラグ',
   positionName: '役職名',
   isManager: '管理者権限',
+  equipmentId: '装備ID',
+  purchaseDateFrom:'購入日(From)',
+  purchaseDateTo:'購入日(To)',
+  statusCd: '状態区分'
 
 };
