@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity, JoinColumn } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, BaseEntity, JoinColumn, OneToMany } from 'typeorm';
 import { MstUniversity } from './MstUniversityEntity';
 import { MstPosition } from './MstPositionEntity';
+import { LendingHistories } from './LendingHistoriesEntity';
 
 @Entity('users')
 export class Users extends BaseEntity  {
@@ -102,6 +103,9 @@ export class Users extends BaseEntity  {
     comment: '更新日時'
   })
   readonly update_date: Date;
+
+  @OneToMany(() => LendingHistories, (lendingHistories) => lendingHistories.user_id )
+  lendingHistories: LendingHistories[];
 
 ;
 }

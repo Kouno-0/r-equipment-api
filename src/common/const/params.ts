@@ -24,6 +24,12 @@ export const PARAMS = {
   equipmentId: '装備ID',
   purchaseDateFrom:'購入日(From)',
   purchaseDateTo:'購入日(To)',
-  statusCd: '状態区分'
-
+  statusCd: '状態区分',
+  lendingId: '貸出ID',
+  lendFrom: '貸出日(From)',
+  lendTo: '貸出日(To)',
+  useFrom: '使用期間(From)',
+  useTo: '使用期間(To)',
+  isReturn: '返却済フラグ',
+  returnPlaceId: '返却場所ID',
 };

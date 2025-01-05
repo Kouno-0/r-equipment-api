@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, BaseEntity, OneToMany } from 'typeorm';
 import { MstEquipment } from './MstEquipmentEntity';
 import { MstType } from './MstTypeEntity';
+import { LendingHistories } from './LendingHistoriesEntity';
 
 @Entity('equipment')
 export class Equipment extends BaseEntity {
@@ -76,4 +77,7 @@ export class Equipment extends BaseEntity {
   @ManyToOne(() => MstEquipment)
   @JoinColumn({ name: 'category_id' })
   readonly category: MstEquipment;
+
+  @OneToMany(() => LendingHistories, (lendingHistories) => lendingHistories.equipment_id )
+  lendingHistories: LendingHistories[];
 }

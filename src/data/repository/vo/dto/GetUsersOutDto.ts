@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export class UserDto {
   userId: string;
   term: number;

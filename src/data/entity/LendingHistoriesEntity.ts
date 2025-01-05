@@ -4,8 +4,8 @@ import { Equipment } from './EquipmentEntity';
 import { Users } from './UsersEntity';
 import { MstUniversity } from './MstUniversityEntity';
 
-@Entity('lending_history')
-export class LendingHistory extends BaseEntity {
+@Entity('lending_histories')
+export class LendingHistories extends BaseEntity {
   @PrimaryColumn(
     'varchar',
     { 
