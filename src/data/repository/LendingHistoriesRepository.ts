@@ -156,8 +156,8 @@ export class LendingHistoriesRepository extends Repository<LendingHistories> imp
     }
     if (searchParam.returnPlaceId) {
       query.andWhere(
-        `CONCAT(${UsersRepository.ALIAS}.${UsersRepository.COLNAMES.COLUMN_USER_LAST_NAME_KANA}, ${UsersRepository.COLNAMES.COLUMN_USER_FIRST_NAME_KANA}) LIKE :user_name_kana`,
-        { user_name_kana: `${searchParam.userNameKana}%` },
+        `${LendingHistoriesRepository.ALIAS}.${LendingHistoriesRepository.COLNAMES.COLUMN_RETURN_PLACE_ID} = :return_place_id`,
+        { return_place_id: searchParam.returnPlaceId },
       );
     }
     return query;
