@@ -5,7 +5,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { plainToClass } from 'class-transformer';
 import { MstEquipmentService } from 'src/services/MstEquipmentService';
 import GetMstEquipmentInVo from 'src/services/vo/GetMstEquipmentInVo';
-import GetMstEquipmentRequestQueryParam from './request/GetMstUniversityRequestQueryParam';
+import GetMstEquipmentRequestQueryParam from './request/GetMstEquipmentRequestQueryParam';
 
 @ApiTags('mst-equipment')
 @Controller('mst-equipment')

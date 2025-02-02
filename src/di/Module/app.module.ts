@@ -7,6 +7,7 @@ import { MstUniversityModule } from './mst-university.module';
 import { MstPositionModule } from './mst-position.module';
 import { UsersModule } from './users.module';
 import { EquipmentModule } from './equipment.module';
+import { LendingHistoriesModule } from './lending-histories.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { EquipmentModule } from './equipment.module';
     MstUniversityModule,
     MstPositionModule,
     EquipmentModule,
-    UsersModule
+    UsersModule,
+    LendingHistoriesModule
   ],
 })
 export class AppModule {}

@@ -4,8 +4,8 @@ import { Equipment } from './EquipmentEntity';
 import { Users } from './UsersEntity';
 import { MstUniversity } from './MstUniversityEntity';
 
-@Entity('lending_history')
-export class LendingHistory extends BaseEntity {
+@Entity('lending_histories')
+export class LendingHistories extends BaseEntity {
   @PrimaryColumn(
     'varchar',
     { 
@@ -13,6 +13,22 @@ export class LendingHistory extends BaseEntity {
     comment: '貸出履歴ID'
   })
   readonly lending_id: string;
+
+  @Column(
+    'varchar',
+    { 
+    length: 7,
+    comment: '装備ID'
+  })
+  readonly equipment_id: string;
+
+  @Column(
+    'varchar',
+    { 
+    length: 7,
+    comment: '持出会員ID'
+  })
+  readonly lend_user_id: string;
 
   @Column(
     'date',
@@ -31,6 +47,22 @@ export class LendingHistory extends BaseEntity {
     {comment: '使用期間(To)'}
   )
   readonly use_to: Date;
+
+  @Column(
+    'varchar',
+    { 
+    length: 30,
+    comment: '行き先'
+  })
+  readonly destination: string;
+
+  @Column(
+    'varchar',
+    { 
+    length: 7,
+    comment: '返却会員ID'
+  })
+  readonly return_user_id: string;
 
   @Column(
     'date', 
@@ -58,30 +90,6 @@ export class LendingHistory extends BaseEntity {
   })
   readonly return_place_other: string;
 
-  @Column(
-    'varchar',
-    { 
-    length: 7,
-    comment: '装備ID'
-  })
-  readonly equipment_id: string;
-
-  @Column(
-    'varchar',
-    { 
-    length: 7,
-    comment: '会員ID'
-  })
-  readonly user_id: string;
-
-  @Column(
-    'varchar',
-    { 
-    length: 30,
-    comment: '行き先'
-  })
-  readonly destination: string;
-
   @CreateDateColumn(
     {
     comment: '登録日時'
@@ -100,9 +108,12 @@ export class LendingHistory extends BaseEntity {
   readonly equipment: Equipment;
 
   @ManyToOne(() => Users)
-  @JoinColumn(
-    { name: 'user_id' })
+  @JoinColumn({ name: 'lend_user_id' })
   readonly user: Users;
+
+  @ManyToOne(() => Users)
+  @JoinColumn({ name: 'return_user_id' })
+  readonly returnUser: Users;
 
   @ManyToOne(() => MstUniversity)
   @JoinColumn(

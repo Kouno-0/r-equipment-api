@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Unique, BaseEntity, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany } from 'typeorm';
 import { Users } from './UsersEntity';
+import { LendingHistories } from './LendingHistoriesEntity';
 
 @Entity('mst_university')
-@Unique(['university_name'])
 export class MstUniversity extends BaseEntity {
   @PrimaryColumn(
     'varchar',
@@ -12,9 +12,6 @@ export class MstUniversity extends BaseEntity {
     comment: '大学ID'
   })
   readonly university_id: string;
-
-  @OneToMany(() => Users, (user) => user.university) 
-  users: Users[];
 
   @Column(
     'varchar',
@@ -51,6 +48,12 @@ export class MstUniversity extends BaseEntity {
     comment: '更新日時'
   })
   readonly update_date: Date;
+
+  @OneToMany(() => Users, (user) => user.university) 
+  users: Users[];
+
+  @OneToMany(() => LendingHistories, (user) => user.returnPlace) 
+  lendingHistories: LendingHistories[];
 
 
 }
