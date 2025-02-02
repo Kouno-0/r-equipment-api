@@ -13,8 +13,10 @@ class LendingHistoriesOutVo {
   readonly equipmentId: string;
   readonly equipmentCategoryId: string;
   readonly equipmentName: string;
-  readonly userId: string;
-  readonly userName: string;
+  readonly lendUserId: string;
+  readonly returnUserId: string;
+  readonly lendUserName: string;
+  readonly returnUserName: string;
   readonly direction: boolean;
   readonly createDate: Date;
   readonly updateDate: Date;

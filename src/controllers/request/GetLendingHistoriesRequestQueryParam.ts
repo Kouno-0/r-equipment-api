@@ -88,9 +88,16 @@ export class GetLendingHistoriesRequestQueryParam {
   @ApiProperty({ required: false, description: '持出会員ID' })
   @Type(() => String)
   @IsOptional()
-  @Matches(/^[\x20-\x7E]*$/, { message: () => `${PARAMS.userId}は半角文字で入力してください` })
+  @Matches(/^[\x20-\x7E]*$/, { message: () => `${PARAMS.lendUserId}は半角文字で入力してください` })
   @MaxLength(7, { message: () => `${PARAMS.userId}は$constraint1桁以内で入力してください` })
-  userId?: string;
+  lendUserId?: string;
+
+  @ApiProperty({ required: false, description: '返却会員ID' })
+  @Type(() => String)
+  @IsOptional()
+  @Matches(/^[\x20-\x7E]*$/, { message: () => `${PARAMS.returnUserId}は半角文字で入力してください` })
+  @MaxLength(7, { message: () => `${PARAMS.userId}は$constraint1桁以内で入力してください` })
+  returnUserId?: string;
 
   @ApiProperty({ required: false, description: '会員姓名カナ' })
   @Type(() => String)

@@ -104,8 +104,7 @@ export class Users extends BaseEntity  {
   })
   readonly update_date: Date;
 
-  @OneToMany(() => LendingHistories, (lendingHistories) => lendingHistories.user_id )
+  @OneToMany(() => LendingHistories, (lendingHistories) => lendingHistories.lend_user_id )
   lendingHistories: LendingHistories[];
 
-;
 }

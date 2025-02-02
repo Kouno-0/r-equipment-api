@@ -10,8 +10,10 @@ export class LendingHistoriesDto {
   equipmentId: string;
   equipmentCategoryId: string;
   equipmentName: string;
-  userId: string;
-  userName: string;
+  lendUserId: string;
+  lendUserName: string;
+  returnUserId: string;
+  returnUserName: string;
   direction: string;
   createDate: Date;
   updateDate: Date;

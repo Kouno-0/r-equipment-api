@@ -33,10 +33,16 @@ class GetEquipmentResponseObj {
   equipmentName!: string;
 
   @ApiProperty({ required: false, description: '持出会員ID' })
-  userId?: string;
+  lendUserId?: string;
+
+  @ApiProperty({ required: false, description: '返却会員ID' })
+  returnUserId?: string;
 
   @ApiProperty({ required: false, description: '持出会員姓名' })
-  userName?: string;
+  lendUserName?: string;
+
+  @ApiProperty({ required: false, description: '返却会員姓名' })
+  returnUserName?: string;
 
   @ApiProperty({ required: false, description: '行き先' })
   destination?: string;

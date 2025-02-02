@@ -9,8 +9,9 @@ export default class GetLendingHistoriesInVo{
   readonly lendTo?: string;
   readonly useFrom?: string;
   readonly useTo?: string;
-  readonly userId?: string;
-  readonly userNameKana?: string;
+  readonly lendUserId?: string;
+  readonly returnUserId?: string;
+  readonly lendUserNameKana?: string;
   readonly isReturn?: string;
   readonly returnPlaceId?: string;
   readonly sort? : string;

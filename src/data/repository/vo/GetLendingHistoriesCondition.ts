@@ -13,8 +13,10 @@ class GetLendingHistoriesCondition{
   readonly lendTo? : string;
   readonly useFrom? : string;
   readonly useTo? : string;
-  readonly userId? : string;
-  readonly userNameKana? : string;
+  readonly lendUserId? : string;
+  readonly lendUserNameKana? : string;
+  readonly returnUserId? : string;
+  readonly returnUserNameKana? : string;
   readonly isReturn? : 0 | 1;
   readonly returnPlaceId: string;
   readonly sort : string;
