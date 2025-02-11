@@ -13,6 +13,6 @@ import { MstUniversityService } from 'src/services/MstUniversityService';
   ],
   controllers: [MstUniversityController],
   providers: [MstUniversityService, MstUniversityRepository],
-  exports: [MstUniversityRepository],
+  exports: [MstUniversityService, MstUniversityRepository],
 })
 export class MstUniversityModule {}

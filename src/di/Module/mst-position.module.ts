@@ -12,6 +12,6 @@ import { MstPositionService } from 'src/services/MstPositionService';
   ],
   controllers: [MstPositionController],
   providers: [MstPositionService, MstPositionRepository],
-  exports: [MstPositionRepository],
+  exports: [MstPositionService, MstPositionRepository],
 })
 export class MstPositionModule {}

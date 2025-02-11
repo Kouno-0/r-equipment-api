@@ -7,6 +7,7 @@ import { IEquipmentRepository } from './interface/IEquipmentRepository';
 import { MstEquipmentRepository } from './MstEquipmentRepository';
 import { MstTypeRepository } from './MstTypeRepository';
 import { EquipmentDto } from './vo/dto/GetEquipmentDto';
+import UpdateEquipmentCondition from './vo/UpdateEquipmentCondition';
 
 
 @Injectable()
@@ -78,6 +79,35 @@ export class EquipmentRepository extends Repository<Equipment> implements IEquip
     query.leftJoin(`${EquipmentRepository.ALIAS}.mstType`, MstTypeRepository.ALIAS);
     return query;
   }
+
+  async updateEquipment(updateParam: UpdateEquipmentCondition): Promise<void> {
+    const query = this.createQueryBuilder(EquipmentRepository.ALIAS);
+    
+    const updateData: any = {};
+    if (updateParam.equipmentName) {
+      updateData.equipment_name = updateParam.equipmentName;
+    }
+    if (updateParam.purchaseDate) {
+      updateData.purchase_date = updateParam.purchaseDate;
+    }
+    if (updateParam.statusCd) {
+      updateData.status_cd = updateParam.statusCd;
+    }
+    if (updateParam.summary) {
+      updateData.summary = updateParam.summary;
+    }
+    if (updateParam.remark) {
+      updateData.remark = updateParam.remark;
+    }
+    if (Object.keys(updateData).length > 0) {
+      await query
+        .update(Equipment)
+        .set(updateData)
+        .where("equipment_id = :equipmentId", { equipmentId: updateParam.equipmentId })
+        .execute();
+    }
+  }
+  
 
     private setWhere(query: SelectQueryBuilder<Equipment>, searchParam: GetEquipmentCondition): SelectQueryBuilder<Equipment> {
       if (searchParam.equipmentId) {

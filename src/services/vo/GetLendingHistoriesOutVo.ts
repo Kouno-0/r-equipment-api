@@ -2,7 +2,7 @@
 import { Exclude, Expose } from "class-transformer";
 @Exclude()
 @Expose()
-class LendingHistoriesOutVo {
+class GetLendingHistoriesOutVo {
   readonly lendingId: string;
   readonly lendingDate: string;
   readonly useFrom: string;
@@ -22,5 +22,5 @@ class LendingHistoriesOutVo {
   readonly updateDate: Date;
 }
 
-Object.seal(LendingHistoriesOutVo);
-export default LendingHistoriesOutVo
+Object.seal(GetLendingHistoriesOutVo);
+export default GetLendingHistoriesOutVo

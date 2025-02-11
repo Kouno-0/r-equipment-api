@@ -13,6 +13,6 @@ import { EquipmentController } from 'src/controllers/EquipmentController';
   ],
   controllers: [EquipmentController],
   providers: [EquipmentService, EquipmentRepository],
-  exports: [EquipmentRepository],
+  exports:  [EquipmentService, EquipmentRepository],
 })
 export class EquipmentModule {}
