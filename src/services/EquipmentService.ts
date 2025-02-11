@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import GetEquipmentInVo from './vo/GetEquipmentInVo';
 import GetEquipmentOutVo from './vo/GetEquipmentOutVo';
@@ -8,6 +8,7 @@ import { EquipmentRepository } from 'src/data/repository/EquipmentRepository';
 import { format } from 'date-fns';
 import { toZonedTime } from 'date-fns-tz'
 import { jstTimeZone } from 'src/common/const/timezone';
+import UpdateEquipmentInVo from './vo/UpdateEquipmentInVo';
 
 @Injectable()
 export class EquipmentService {
@@ -21,8 +22,14 @@ export class EquipmentService {
 
       // ページ数 > 指定したページ番号 であるかをチェック
       if(inVo.pageNumber && Number(inVo.pageNumber) > Math.ceil(total /Number(inVo.count)) ){
-        console.log(Math.ceil(total /Number(inVo.count)));
-        throw new Error('指定されたページ番号が不正です。');
+        throw new HttpException(
+          {
+            status: HttpStatus.BAD_REQUEST,
+            error: 'Bad Request',
+            message: '指定されたページ番号が不正です。',
+          },
+          HttpStatus.BAD_REQUEST,
+        );
       }
 
       const getEquipmentResult = await this.repository.fetchEquipment(searchParam);
@@ -35,6 +42,14 @@ export class EquipmentService {
       return {
         total,
         results: plainToClass(GetEquipmentOutVo, getEquipmentResult)
+      }
+    }
+
+    async updateEquipment(inVo: UpdateEquipmentInVo): Promise<void>{
+      try{
+        await this.repository.updateEquipment(inVo);
+      } catch(e){
+        throw e;
       }
     }
   }

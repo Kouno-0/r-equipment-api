@@ -62,6 +62,15 @@ export class Equipment extends BaseEntity {
    })
   readonly summary: string;
 
+  @Column(
+    'varchar',
+    { 
+    length: 300, 
+    nullable: true,
+    comment: '備考'
+   })
+  readonly remark: string;
+
   @CreateDateColumn(
     {
     comment: '登録日時'

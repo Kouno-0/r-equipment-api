@@ -8,6 +8,8 @@ import { EquipmentRepository } from './EquipmentRepository';
 import { UsersRepository } from './UsersRepository';
 import { LendingHistoriesDto } from './vo/dto/GetLendingHistoriesOutDto';
 import { MstUniversityRepository } from './MstUniversityRepository';
+import UpdateLendingHistoriesCondition from './vo/UpdateLendingHistoriesCondition';
+import CreateLendingHistoriesCondition from './vo/CreateLendingHistoriesCondition';
 
 
 @Injectable()
@@ -155,13 +157,13 @@ export class LendingHistoriesRepository extends Repository<LendingHistories> imp
         { return_user_name_kana: `${searchParam.returnUserNameKana}%` },
       );
     }
-    switch(searchParam.isReturn){
-      case 1:
+    switch(searchParam.statusCd){
+      case '01': // 持出中
         query.andWhere(
           `${LendingHistoriesRepository.ALIAS}.${LendingHistoriesRepository.COLNAMES.COLUMN_RETURN_DATE} IS NULL`,
         );
         break;
-      case 0:
+      case '00': // 持出可
         query.andWhere(
           `${LendingHistoriesRepository.ALIAS}.${LendingHistoriesRepository.COLNAMES.COLUMN_RETURN_DATE} IS NOT NULL`,
         );
@@ -176,6 +178,34 @@ export class LendingHistoriesRepository extends Repository<LendingHistories> imp
       );
     }
     return query;
+  }
+
+  async createLendingHistories(searchParam: CreateLendingHistoriesCondition): Promise<void> {
+    const lendingHistory = new LendingHistories();
+    lendingHistory.equipment_id = searchParam.equipmentId;
+    lendingHistory.lend_user_id = searchParam.lendUserId;
+    lendingHistory.lending_date = new Date(searchParam.lendDate);
+    lendingHistory.use_from = new Date(searchParam.useFrom);
+    lendingHistory.use_to = new Date(searchParam.useTo);
+    lendingHistory.destination = searchParam.destination;
+    lendingHistory.return_user_id = null;
+    lendingHistory.return_date = null;
+    lendingHistory.return_place_id = null;
+    await lendingHistory.save(); 
+  }
+
+  async updateLendingHistories(searchParam: UpdateLendingHistoriesCondition): Promise<void> {
+    const query = this.createQueryBuilder(LendingHistoriesRepository.ALIAS);
+    await query
+      .update(LendingHistories)
+      .set({
+        return_user_id: searchParam.returnUserId,
+        return_date: searchParam.returnDate,
+        return_place_id: searchParam.returnPlaceId,
+        return_place_other: searchParam.returnPlaceOther ? searchParam.returnPlaceOther : null
+      })
+      .where("lending_id = :lendingId", { lendingId: searchParam.lendingId }) 
+      .execute();
   }
 
 }

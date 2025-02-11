@@ -17,8 +17,8 @@ class GetLendingHistoriesCondition{
   readonly lendUserNameKana? : string;
   readonly returnUserId? : string;
   readonly returnUserNameKana? : string;
-  readonly isReturn? : 0 | 1;
-  readonly returnPlaceId: string;
+  readonly statusCd?  : '00' | '01';
+  readonly returnPlaceId?: string;
   readonly sort : string;
   readonly direction: "ASC" | "DESC";
 }
