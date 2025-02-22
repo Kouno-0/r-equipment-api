@@ -75,7 +75,13 @@ export class EquipmentRepository extends Repository<Equipment> implements IEquip
 
   private setJoin(query: SelectQueryBuilder<Equipment>): SelectQueryBuilder<Equipment> {
     query.leftJoin(`${EquipmentRepository.ALIAS}.mstEquipment`, MstEquipmentRepository.ALIAS);
-    query.leftJoin(`${EquipmentRepository.ALIAS}.mstType`, MstTypeRepository.ALIAS);
+    // 区分マスタ「使用状態」で結合
+    query.leftJoin(
+      `${EquipmentRepository.ALIAS}.mstType`,
+      MstTypeRepository.ALIAS,
+      `${MstTypeRepository.ALIAS}.type_cd = ${EquipmentRepository.ALIAS}.status_cd AND ${MstTypeRepository.ALIAS}.${MstTypeRepository.COLNAMES.COLUMN_TYPE_KBN} = :equipmentState`,
+      { equipmentState: 'equipmentState' }
+  );
     return query;
   }
 
