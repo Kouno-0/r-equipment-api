@@ -8,10 +8,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // ウィジェットからのアクセス許可
-  // app.enableCors({
-  //   origin: 'http://localhost:3000',
-  //   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
-  // });
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+  });
 
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(8080);
