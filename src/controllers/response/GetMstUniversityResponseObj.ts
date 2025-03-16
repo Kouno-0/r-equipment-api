@@ -8,7 +8,7 @@ export class GetMstUniversityResponseObj {
   @ApiProperty({ required: true, description: '大学名' })
   universityName?: string;
 
-  @ApiProperty({ required: false, description: '返却場所フラグ' })
+  @ApiProperty({ required: false, description: '保管場所フラグ' })
   isReturnPlace?: number;
 
 }

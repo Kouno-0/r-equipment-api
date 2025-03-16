@@ -8,100 +8,101 @@ import { MstUniversity } from './MstUniversityEntity';
 export class LendingHistories extends BaseEntity {
   @PrimaryColumn(
     'varchar',
-    { 
-    length: 7,
-    comment: '貸出履歴ID'
-  })
+    {
+      length: 7,
+      comment: '貸出履歴ID'
+    })
   readonly lending_id: string;
 
   @Column(
     'varchar',
-    { 
-    length: 7,
-    comment: '装備ID'
-  })
+    {
+      length: 7,
+      comment: '装備ID'
+    })
   readonly equipment_id: string;
 
   @Column(
     'varchar',
-    { 
-    length: 7,
-    comment: '持出会員ID'
-  })
+    {
+      length: 7,
+      comment: '持出会員ID'
+    })
   readonly lend_user_id: string;
 
   @Column(
     'date',
-    {comment: '貸出日'}
+    { comment: '貸出日' }
   )
   readonly lending_date: Date;
 
   @Column(
     'date',
-    {comment: '使用期間(From)'}
+    { comment: '使用期間(From)' }
   )
   readonly use_from: Date;
 
   @Column(
     'date',
-    {comment: '使用期間(To)'}
+    { comment: '使用期間(To)' }
   )
   readonly use_to: Date;
 
   @Column(
     'varchar',
-    { 
-    length: 30,
-    comment: '行き先'
-  })
+    {
+      length: 30,
+      comment: '行き先'
+    })
   readonly destination: string;
 
   @Column(
     'varchar',
-    { 
-    length: 7,
-    comment: '返却会員ID'
-  })
+    {
+      length: 7,
+      comment: '返却会員ID'
+    })
   readonly return_user_id: string;
 
   @Column(
-    'date', 
-    { 
+    'date',
+    {
       nullable: true,
       comment: '返却日'
-     })
+    })
   readonly return_date: Date;
 
   @Column(
     'varchar',
-    { 
-    length: 3,
-     nullable: true,
-    comment: '返却場所ID'
-  })
+    {
+      length: 3,
+      nullable: true,
+      comment: '保管場所コード'
+    })
   readonly return_place_id: string;
 
   @Column(
     'varchar',
-    { 
-    length: 30,
-     nullable: true,
-    comment: '返却場所(その他)'
-  })
+    {
+      length: 30,
+      nullable: true,
+      comment: '保管場所(その他)'
+    })
   readonly return_place_other: string;
 
   @CreateDateColumn(
     {
-    comment: '登録日時'
-  })
+      comment: '登録日時'
+    })
   readonly create_date: Date;
 
   @UpdateDateColumn(
     {
-    comment: '更新日時'
-  })
+      comment: '更新日時'
+    })
   readonly update_date: Date;
 
+  // Join
   @ManyToOne(() => Equipment)
   @JoinColumn(
     { name: 'equipment_id' })

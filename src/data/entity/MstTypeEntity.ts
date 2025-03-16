@@ -8,38 +8,41 @@ import { Equipment } from './EquipmentEntity';
 export class MstType extends BaseEntity {
   @PrimaryColumn(
     'varchar',
-    { 
-    length: 50,
-    comment: '区分タイプ'
-  })
+    {
+      length: 50,
+      comment: '区分タイプ'
+    })
   readonly type_kbn: string;
 
 
   @Column(
     'varchar',
     {
-    length: 2,
-    comment: '区分コード'
-  })
+      length: 2,
+      comment: '区分コード'
+    })
   readonly type_cd: string;
 
-  @OneToMany(() => Equipment, (equipment) => equipment.mstType) 
-  equipment: Equipment[];
+  @OneToMany(() => Equipment, (equipment) => equipment.mstEquipmentState)
+  equipmentState: Equipment[];
+
+  @OneToMany(() => Equipment, (equipment) => equipment.mstStorePlace)
+  storePlace: Equipment[];
 
 
   @Column(
     'varchar',
     {
-    length: 50,
-    comment: '区分名'
-  })
+      length: 50,
+      comment: '区分名'
+    })
   readonly type_name: string;
 
   @Column(
     'int',
     {
-    comment: '表示順序'
-  })
+      comment: '表示順序'
+    })
   readonly sort_order: number;
 
   @CreateDateColumn({

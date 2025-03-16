@@ -17,10 +17,10 @@ class GetEquipmentResponseObj {
   @ApiProperty({ required: false, description: '返却日' })
   returnDate?: string;
 
-  @ApiProperty({ required: false, description: '返却場所ID' })
-  returnPlaceId!: string;
+  @ApiProperty({ required: false, description: '保管場所コード' })
+  storePlaceCd!: string;
 
-  @ApiProperty({ required: false, description: '返却場所名' })
+  @ApiProperty({ required: false, description: '保管場所名' })
   returnPlaceName!: string;
 
   @ApiProperty({ required: false, description: '装備ID' })

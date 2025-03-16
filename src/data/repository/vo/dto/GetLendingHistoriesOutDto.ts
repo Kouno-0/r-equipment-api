@@ -5,14 +5,14 @@ export class LendingHistoriesDto {
   useFrom: string;
   useTo: string;
   returnDate: string;
-  returnPlaceId: string;
+  storePlaceCd: string;
   returnPlaceName: string;
   equipmentId: string;
   equipmentCategoryId: string;
   equipmentName: string;
-  lendUserId: string;
+  lendUserTerm: string;
   lendUserName: string;
-  returnUserId: string;
+  returnUserTerm: string;
   returnUserName: string;
   direction: string;
   createDate: Date;

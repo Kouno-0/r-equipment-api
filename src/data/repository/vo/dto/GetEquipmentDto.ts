@@ -5,7 +5,7 @@ export class EquipmentDto {
   categoryId: string;
   categoryName: string;
   purchaseDate: string;
-  statusCd: string;
+  equipmentState: string;
   status: string;
   summary: string;
   createDate: Date;

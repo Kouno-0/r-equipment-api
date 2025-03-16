@@ -7,36 +7,36 @@ import { LendingHistories } from './LendingHistoriesEntity';
 export class MstUniversity extends BaseEntity {
   @PrimaryColumn(
     'varchar',
-    { 
-    length: 3,
-    comment: '大学ID'
-  })
+    {
+      length: 3,
+      comment: '大学ID'
+    })
   readonly university_id: string;
 
   @Column(
     'varchar',
-    { 
-    length: 30,
-    comment: '大学名'
-  })
+    {
+      length: 30,
+      comment: '大学名'
+    })
   readonly university_name: string;
 
   @Column(
-    'int', 
-    { 
+    'int',
+    {
       nullable: true,
-      comment: '返却場所フラグ'
-     }
+      comment: '保管場所フラグ'
+    }
   )
   readonly is_return_place: number;
 
   @Column(
     'varchar',
-    { 
-    length: 100, 
-    nullable: true,
-    comment: '備考'
-   })
+    {
+      length: 100,
+      nullable: true,
+      comment: '備考'
+    })
   readonly remarks: string;
 
   @CreateDateColumn({
@@ -49,10 +49,10 @@ export class MstUniversity extends BaseEntity {
   })
   readonly update_date: Date;
 
-  @OneToMany(() => Users, (user) => user.university) 
+  @OneToMany(() => Users, (user) => user.university)
   users: Users[];
 
-  @OneToMany(() => LendingHistories, (user) => user.returnPlace) 
+  @OneToMany(() => LendingHistories, (user) => user.returnPlace)
   lendingHistories: LendingHistories[];
 
 

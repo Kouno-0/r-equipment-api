@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-export default class GetLendingHistoriesInVo{
+export default class GetLendingHistoriesInVo {
   readonly count: number;
   readonly pageNumber: number;
   readonly lendingId?: string;
@@ -9,12 +9,13 @@ export default class GetLendingHistoriesInVo{
   readonly lendTo?: string;
   readonly useFrom?: string;
   readonly useTo?: string;
-  readonly lendUserId?: string;
-  readonly returnUserId?: string;
-  readonly lendUserNameKana?: string;
+  readonly lendUserTerm: string;
+  readonly returnUserTerm: string;
+  readonly lendUserName?: string;
+  readonly returnUserName?: string;
   readonly isReturn?: string;
-  readonly returnPlaceId?: string;
-  readonly sort? : string;
+  readonly storePlaceCd?: string;
+  readonly sort?: string;
   readonly direction: "ASC" | "DESC";
 
 }

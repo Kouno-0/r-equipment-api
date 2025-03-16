@@ -3,16 +3,17 @@ import { Exclude, Expose } from "class-transformer";
 
 @Exclude()
 @Expose()
-class GetEquipmentCondition{
+class GetEquipmentCondition {
   readonly count: number;
   readonly pageNumber: number;
-  readonly equipmentId? : string;
-  readonly equipmentCategoryId? : string;
-  readonly equipmentName? : string;
-  readonly purchaseDateFrom? : string;
-  readonly purchaseDateTo? : string;
-  readonly statusCd? : string;
-  readonly sort? : string;
+  readonly equipmentId?: string;
+  readonly equipmentCategoryId?: string;
+  readonly equipmentName?: string;
+  readonly purchaseDateFrom?: string;
+  readonly purchaseDateTo?: string;
+  readonly equipmentStateCd?: string;
+  readonly storePlaceCd?: string;
+  readonly sort?: string;
   readonly direction: "ASC" | "DESC";
 }
 Object.seal(GetEquipmentCondition);

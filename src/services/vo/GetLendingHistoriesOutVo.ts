@@ -8,13 +8,13 @@ class LendingHistoriesOutVo {
   readonly useFrom: string;
   readonly useTo: string;
   readonly returnDate: string;
-  readonly returnPlaceId: string;
+  readonly storePlaceCd: string;
   readonly returnPlaceName: string;
   readonly equipmentId: string;
   readonly equipmentCategoryId: string;
   readonly equipmentName: string;
-  readonly lendUserId: string;
-  readonly returnUserId: string;
+  readonly lendUserTerm: string;
+  readonly returnUserTerm: string;
   readonly lendUserName: string;
   readonly returnUserName: string;
   readonly direction: boolean;

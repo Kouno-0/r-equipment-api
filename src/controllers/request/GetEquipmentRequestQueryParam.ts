@@ -3,6 +3,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
 import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Matches, MaxLength, Validate } from "class-validator";
 import { PARAMS } from "src/common/const/params";
+import { TYPE_CODE } from "src/common/const/typeCode";
 import { IsValidDate } from "src/common/validator/isValidDate";
 
 export class GetEquipmentRequestQueryParam {
@@ -19,7 +20,7 @@ export class GetEquipmentRequestQueryParam {
   @IsNumber()
   pageSize: number = 1;
 
-  @ApiProperty({ required: false, description:  PARAMS.equipmentId })
+  @ApiProperty({ required: false, description: PARAMS.equipmentId })
   @Type(() => String)
   @IsOptional()
   @Matches(/^[\x20-\x7E]*$/, { message: () => `${PARAMS.equipmentId}は半角文字で入力してください` })
@@ -55,13 +56,21 @@ export class GetEquipmentRequestQueryParam {
   })
   purchaseDateTo?: string;
 
-  @ApiProperty({ required: false, description: PARAMS.statusCd })
+  @ApiProperty({ required: false, description: PARAMS.equipmentStateCd })
   @Type(() => String)
   @IsOptional()
-  @IsIn(['00', '01', '02'], {
-    message: `${PARAMS.statusCd}は 00, 01, 02 のいずれかを入力してください`,
+  @IsIn(TYPE_CODE.equipmentState, {
+    message: `${PARAMS.equipmentStateCd}の設定値が不正です`,
   })
-  statusCd?: string;
+  equipmentStateCd?: string;
+
+  @ApiProperty({ required: false, description: PARAMS.storePlaceCd })
+  @Type(() => String)
+  @IsOptional()
+  @IsIn(TYPE_CODE.storePlace, {
+    message: `${PARAMS.storePlaceCd}の設定値が不正です`,
+  })
+  storePlaceCd?: string;
 
 
   @ApiProperty({ required: false, description: 'ソート' })
